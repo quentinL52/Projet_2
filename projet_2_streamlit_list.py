@@ -137,6 +137,7 @@ if option:
     movie_actors = movie_row['Actors_names']
     movie_year = movie_row['startYear']
 
+
     actor_list = movie_actors.split(',')[:5]
     formatted_actors = ', '.join(actor_list)
 
@@ -196,7 +197,7 @@ if option:
             movie_genre = movie_row['genres']
             movie_year = movie_row['startYear']
 
-            actor_list = movie_actors.split(',')[:5]
+            actor_list = movie_row['Actors_names'].split(',')[:5]
             formatted_actors = ', '.join(actor_list)
 
             st.markdown(f"""
@@ -255,7 +256,7 @@ if option:
             movie_genre = movie_row2['genres']
             movie_year = movie_row2['startYear']
 
-            actor_list = movie_actors.split(',')[:5]
+            actor_list = movie_row2['Actors_names'].split(',')[:5]
             formatted_actors = ', '.join(actor_list)
 
             st.markdown(f"""
