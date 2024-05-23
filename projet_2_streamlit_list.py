@@ -122,6 +122,7 @@ with col2:
 
 option = st.selectbox("Choisissez un film pour obtenir une recommandation", df2['title'].unique())
 selected_movie = None
+selected_movie2 = None
 
 ###################################### popover descriptif du film choisi ###################################
 
@@ -227,8 +228,8 @@ if option:
         num_cols = 5
         cols = st.columns(num_cols)
 
-        for i, movie in enumerate(movie_recommendation2):
-            movie_row2 = df2[df2['title'] == movie]
+        for i2, movie2 in enumerate(movie_recommendation2):
+            movie_row2 = df2[df2['title'] == movie2]
             if not movie_row2.empty:
                 movie_image_path = movie_row2.iloc[0]['poster_path']
                 movie_description = movie_row2.iloc[0]['overview']
@@ -240,13 +241,13 @@ if option:
 
 ############################# bouton pour les infos de films en dessous des images ###################################
 
-                with cols[i % num_cols]:
+                with cols[i2 % num_cols]:
                     st.image(movie_image_path, use_column_width=True)
-                    if st.button("Plus d'infos", key=f"button_{i+6}"):
-                        selected_movie = movie
+                    if st.button("Plus d'infos", key=f"button_{i2+6}"):
+                        selected_movie2 = movie2
 
-        if selected_movie:
-            movie_row2 = df2[df2['title'] == selected_movie].iloc[0]
+        if selected_movie2:
+            movie_row2 = df2[df2['title'] == selected_movie2].iloc[0]
             movie_image_path = movie_row2['poster_path'] 
             movie_description = movie_row2['overview']
             movie_duration = movie_row2['runtimeMinutes']
@@ -261,10 +262,10 @@ if option:
                 <div id="plus d'infos" style="border: 1px solid #ddd; padding: 10px; border-radius: 10px; margin-top: 20px;">
                     <div style="display: flex;">
                         <div style="flex: 1; padding-right: 20px;">
-                            <img src="{movie_image_path}" alt="{selected_movie}" style="width: 100%; border-radius: 10px;">
+                            <img src="{movie_image_path}" alt="{selected_movie2}" style="width: 100%; border-radius: 10px;">
                         </div>
                         <div style="flex: 2;">
-                            <h2 style='font-size: 40px;'>{selected_movie}</h2><br>
+                            <h2 style='font-size: 40px;'>{selected_movie2}</h2><br>
                             <strong>Description:</strong> {movie_description}<br>
                             <strong>Durée:</strong> {movie_duration} min<br>
                             <strong>Année:</strong> {movie_year}<br>
