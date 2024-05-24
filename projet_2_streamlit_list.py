@@ -11,6 +11,25 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.neighbors import NearestNeighbors
 from nltk.stem.porter import PorterStemmer
 st.set_page_config(layout="wide")
+from htbuilder import HtmlElement, div, ul, li, br, hr, a, p, img, styles, classes, fonts
+from htbuilder.units import percent, px
+from htbuilder.funcs import rgba, rgb
+import base64
+import os
+
+def load_image_as_base64(image_path):
+    with open(image_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode()
+    
+def image(image_base64, picture_texte,width=100,height=100):
+    return f"""
+        <div class="footer">
+            Made by <a href="https://github.com/quentinL52/Projet_2" target="_blank">DataPopcorn</a>
+            <img src="data:image/png;base64,{image_base64}" alt={picture_texte} width={width} height={height}%>
+        </div>
+    """
+
+    
 
 ################# data set #############################################################################
 
@@ -277,3 +296,39 @@ if option:
                     </div>
                 </div>
             """, unsafe_allow_html=True)
+
+
+
+st.markdown(
+    """
+    <style>
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: white;
+        color: black;
+        text-align: center;
+        padding: 0px;
+        box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.1);
+    }
+        .footer img {
+        width: 50px;
+        vertical-align: middle;
+    }
+    .footer {
+        color: black;
+        text-decoration: none;
+        height: 4vh;
+    }
+    </style>
+
+    """,
+    unsafe_allow_html=True
+)
+
+
+image_path = os.path.join("picture", "Design sans titre.png")
+image_base64 = load_image_as_base64(image_path)
+st.markdown(image(image_base64,"logo",width="auto",height=100), unsafe_allow_html=True)
