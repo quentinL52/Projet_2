@@ -24,11 +24,10 @@ def load_image_as_base64(image_path):
 def image(image_base64, picture_texte,width=100,height=100):
     return f"""
         <div class="footer">
-            Made by <a https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">DataPopcorn</a>
-            <img src="data:image/png;base64,{image_base64}" alt={picture_texte} width={width} height={height}%>
+            Made by <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">DataPopcorn</a>
+            <img src="data:image/png;base64,{image_base64}" alt="{picture_texte}" width="{width}" height="{height}%" />
         </div>
     """
-
     
 
 ################# data set #############################################################################
