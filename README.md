@@ -32,7 +32,7 @@ Cliquez sur le bouton “Plus d’infos” pour obtenir des informations supplé
 
 # Informations:
 
-Data Popcorn 
+devellopé par l'equipe Data Popcorn 
 
 Lien:
 
